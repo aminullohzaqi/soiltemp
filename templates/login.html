@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block style %}
+<style>
+    #login {
+        border-collapse: collapse;
+    }
+
+    #login td, #login th {
+      border: 1px solid none;
+      padding: 30px;
+    }
+
+    #login th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #1479FF;
+      color: #FFFFFF;
+    }
+
+    #login td {
+        background-color: #fafafa;
+    }
+    
+    .btn {
+        border-radius: 5px;
+        padding: 8px 32px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+</style>
+{% endblock style %}
+
+{% block body %}
+<table id="login" class="container shadow" style="width: 350px; margin-top: 100px;">
+    <thead>
+        <th style="text-align: center;">USER LOGIN</th>
+    </thead>
+    <tbody>
+        <td>
+           <form method="POST">
+               {%csrf_token%}
+                <div class="form-group">
+                    <label for="uname">Username:</label>
+                    <input type="text" class="form-control" id="uname" placeholder="Enter username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="pwd">Password:</label>
+                    <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">LOGIN</button>
+          </form> 
+        </td>
+    </tbody>
+  
+</table>
+
+{% endblock body %}

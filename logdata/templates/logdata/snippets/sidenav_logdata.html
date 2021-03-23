@@ -1,0 +1,72 @@
+{% load static %}
+
+<div class="sidebar">
+    <div class="menu-atas">
+        <div class="menu">
+            <a class="link" href="{% url "dashboard" %}">
+                <i class="fa fa-lg fa-desktop" aria-hidden="true"></i>
+                <p>Dashboard</p>
+            </a>
+        </div>
+        <div class="menu">
+            <a class="link" href="{% url "input" %}">
+                <i class="fa fa-lg fa-plus-square-o" aria-hidden="true"></i>
+                <p>Input</p>
+            </a>
+        </div>
+        <div class="menu">
+            <a class="link" href="{% url "logdata" %}">
+                <i class="fa fa-lg fa-file-text-o active shadow" aria-hidden="true"></i>
+                <p class="font-active">Log Data</p>
+            </a>
+        </div>    
+        <div class="menu">
+            <a class="link" href="{% url "about" %}">
+                <i class="fa fa-lg fa-question-circle-o" aria-hidden="true"></i>
+                <p>About</p>
+            </a>
+        </div>
+    </div>
+    <div class="menu-bawah">
+        <div class="menu user">
+            <a class="link">
+                <span class="fa fa-2x fa-user-circle" aria-hidden="true"></span>
+                <p><strong>{{user}}</strong></p>
+            </a>
+        </div>    
+        <div class="logout">
+            <a id="logout" href="{% url "logout" %}">
+                <span class="fa fa-power-off" aria-hidden="true"></span> Log Out
+            </a>
+        </div>
+    </div> 
+</div>
+
+<nav class="navbar fixed-top navbar-expand-md navbar-light bg-light shadow">
+    <a class="navbar-brand" href="{% url "dashboard" %}">Acanation</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a href="{% url "dashboard" %}"><i class="fa fa-fw fa-desktop" aria-hidden="true"></i> Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a href="{% url "input" %}"><i class="fa fa-fw fa-plus-square-o" aria-hidden="true"></i> Input</a>
+            </li>
+            <li class="nav-item">
+                <a href="{% url "logdata" %}"><i class="fa fa-fw fa-file-text-o" aria-hidden="true"></i> Log Data</a>
+            </li>
+            <li class="nav-item">
+                <a href="{% url "about" %}"><i class="fa fa-fw fa-question-circle-o" aria-hidden="true"></i> About</a>
+            </li>
+            <li class="nav-item">
+                <a href=""><i class="fa fa-fw fa-user-circle" aria-hidden="true"></i> {{user}}</a>
+            </li>
+            <li class="nav-item">
+                <a href="{% url "logout" %}"><i class="fa fa-fw fa-power-off" aria-hidden="true"></i> Log Out</a>
+            </li>
+        </ul>
+    </div>
+</nav>

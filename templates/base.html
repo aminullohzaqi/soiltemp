@@ -1,0 +1,37 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{judul}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% include "snippets/style.html" %}
+    {% block style_sidenav %}
+        <link rel="stylesheet" type="text/css" href="{% static "css/sidenav_style.css" %}">
+    {% endblock style_sidenav %}
+    {% block app_css %}
+        <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}">
+    {% endblock app_css %}
+    {% block style %}
+    
+    {% endblock style %}
+</head>
+
+<body>
+    {% block body %}
+    
+    {% block sidenav %}
+        
+    {% endblock sidenav %}
+    <div class="content">
+        {% block content %}
+        
+        {% endblock content %}
+    </div>
+    {% endblock body %}
+    {% block script %}
+        
+    {% endblock script %}
+    {% include "snippets/script.html" %}
+</body>
+</html>

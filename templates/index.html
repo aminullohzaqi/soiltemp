@@ -1,0 +1,158 @@
+{% extends "base.html"%}
+
+{% load static %}
+
+{% block style_sidenav %}
+{% endblock style_sidenav %}
+
+{% block style %}
+{% include "snippets/chartscript.html" %}
+<style>
+    .content{
+        margin-top: 50px;
+    }
+    .header{
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .graph{
+        background-color: white;
+    }
+    
+    .bottom-graph{
+        margin-top: 20px;
+    }
+    
+    .gauge{
+        display: flex;
+        justify-content: space-around;
+        margin-left: 10px;
+    }
+    
+    .display {
+        position: relative;
+        top: 20px;
+        width: 170px;
+        height: 235px;
+    }
+    
+    .label-gauge{
+        position: relative;
+        top: -20px;
+    }
+    
+    .gauge-container.three.suhu> .gauge > .value {
+        stroke: #FF1717;
+        stroke-width: 4;
+    }
+    
+    .gauge-container.three.kelembaban> .gauge > .value {
+        stroke: #00D4FF;
+        stroke-width: 4;
+    }
+    
+    .gauge-container.three.tekanan> .gauge > .value {
+        stroke: #9000AA;
+        stroke-width: 4;
+    }
+    
+    .gauge-container.three.wind_speed> .gauge > .value {
+        stroke: #FF9E00;
+        stroke-width: 4;
+    }
+    
+    @media screen and (max-width: 900px) {
+        .header{
+            display: block;
+        }
+    }
+    
+    @media screen and (max-width: 1190px) {
+        .gauge{
+            margin-left: 0;
+            margin-top: 10px;
+        }
+    }
+</style>
+{% endblock style %}
+
+{% block sidenav %}
+{% endblock sidenav %}
+
+{% block content %}
+    <div class="container">
+        <div class="header">
+            <h1>Dashboard</h1>
+            <h4>Last Update : {% for last_update in gauge_data %}{{last_update.tanggal}}, {{last_update.jam}}{% endfor last_update in gauge_data %}</h4>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="column">
+                <div class="container graph shadow">
+                    <h5 class="text-center">Suhu Tanah</h5>
+                    <canvas id="soiltemp"></canvas>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="container graph shadow bottom-graph">
+                            <canvas id="rainfall"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="container graph shadow bottom-graph">
+                            <canvas id="solarRadiation"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="row">
+                    <div class="gauge">
+                        <div class="col-sm-6">
+                            <div class="graph shadow container">
+                                <div class="display">
+                                    <div id="suhu" class="gauge-container three suhu"></div>
+                                </div>
+                                <h4 class="text-center label-gauge">Temperature</h4>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="graph shadow container">
+                                <div class="display">
+                                    <div id="kelembaban" class="gauge-container three kelembaban"></div>
+                                </div>
+                                <h4 class="text-center label-gauge">Kelembaban</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="gauge">
+                        <div class="col-sm-6">
+                            <div class="graph shadow container">
+                                <div class="display">
+                                    <div id="tekanan" class="gauge-container three tekanan"></div>
+                                </div>
+                                <h4 class="text-center label-gauge">Tekanan</h4>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="graph shadow container">
+                                <div class="display">
+                                    <div id="wind_speed" class="gauge-container three wind_speed"></div>
+                                </div>
+                                <h4 class="text-center label-gauge">Kecepatan</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>      
+    </div>
+{% endblock content %}
+
+{% block script %}
+    {% include "snippets/script_graph.html" %}
+{% endblock script %}

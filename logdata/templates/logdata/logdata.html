@@ -1,0 +1,184 @@
+{% extends "base.html" %}
+
+{% block style %}
+<style>
+    h1{
+        border-bottom-style: solid;
+        border-bottom-color: #1479FF;
+        color: #193B68;
+        font-size: 52px;
+        font-weight: 600;
+        margin-top: 30px;
+        padding-top: 20px;
+    }
+
+    .filter{
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+    
+    .filter th{
+        vertical-align: middle;
+    }
+    
+    button{
+        background-color: #00A8DE;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        padding: 4px 10px;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        -webkit-transition-duration: 0.4s; /* Safari */
+        transition-duration: 0.4s;
+    }
+    
+    button:hover {
+        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+    }
+    
+    #tabel{
+        border-collapse: collapse;
+    }
+    
+    #tabel td, #tabel th{
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+        vertical-align: middle;
+        font-size: small;
+    }
+
+    #tabel th {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        background-color: #1479FF;
+        color: white;
+    }
+    
+    #tabel tr {
+        background-color: white;
+    }
+    
+    #tabel tr:hover {background-color: #ddd;}
+    
+    .btn.btn-primary{
+        width: auto;
+        padding-top: 3px;
+        padding-bottom: 10px;
+    }
+    
+    .btn{
+        width: 40px;
+        height: 30px;
+        margin-top: -5px;
+    }
+    
+    .btn svg {
+        display: block;
+        margin-left: -3px;
+        margin-top: -2px;
+        align-content: flex-start;
+    }
+    @media only screen and (max-device-width: 750px) {
+        h1{
+            font-size: 32px;
+        }
+    }
+</style>
+{% endblock style %}
+
+{% block navbar %}
+    {% include "snippets/navbar.html"%}
+{% endblock navbar %}
+
+{% block sidenav %}
+    {% include sidenav%}
+{% endblock sidenav %}
+
+{% block content %}
+<div class="container row1 row">
+    <div class="title col-md-4">
+        <h1>{{judul}}</h1>
+    </div>
+</div>
+<div class="container row2">
+    <div class="filter">
+        <form method="GET">
+            <table class="filter">
+                <h4>Filter Tanggal</h4>
+                <th>
+                    {{filter_form.start_date}}
+                </th>
+                <th>-</th>
+                <th>
+                    {{filter_form.end_date}}
+                </th>
+            </table>
+            
+            <button type="submit" class="">Submit</button>
+        </form>
+    </div>
+    <br>
+    <form method="POST">
+        {%csrf_token%}
+        <input type="submit" name="download" class="btn btn-primary" value="Download Data">
+    </form>
+    <table class="table" id="tabel">
+        <thead>
+            <tr>
+                <th rowspan="2">Tanggal</th>
+                <th rowspan="2">Jam</th>
+                <th colspan="6">Data AWS</th>
+                <th colspan="5">Suhu Tanah</th>
+                <th rowspan="2">Action</th>
+            </tr>
+            <tr>
+                <th scope="col">Temp</th>
+                <th scope="col">RH</th>
+                <th scope="col">Press</th>
+                <th scope="col">SR</th>
+                <th scope="col">WS</th>
+                <th scope="col">RF</th>
+                <th scope="col">5cm</th>
+                <th scope="col">10cm</th>
+                <th scope="col">20cm</th>
+                <th scope="col">50cm</th>
+                <th scope="col">100cm</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for soiltemp in filter_data %}
+            <tr>
+                <td>{{soiltemp.tanggal}}</td>
+                <td>{{soiltemp.jam}}</td>
+                <td>{{soiltemp.suhu}}</td>
+                <td>{{soiltemp.kelembaban}}</td>
+                <td>{{soiltemp.tekanan}}</td>
+                <td>{{soiltemp.radiasi_matahari}}</td>
+                <td>{{soiltemp.wind_speed}}</td>
+                <td>{{soiltemp.rain_fall}}</td>
+                <td>{{soiltemp.cm_5}}</td>
+                <td>{{soiltemp.cm_10}}</td>
+                <td>{{soiltemp.cm_20}}</td>
+                <td>{{soiltemp.cm_50}}</td>
+                <td>{{soiltemp.cm_100}}</td>
+                <td>
+                    <a href="{% url 'update' soiltemp.id %}" class="btn btn-warning">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
+                    </a>
+                    <a href="{% url 'delete' soiltemp.id %}" class="btn btn-danger">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+</div>
+{% endblock content %}
