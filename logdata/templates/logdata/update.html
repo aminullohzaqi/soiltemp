@@ -103,6 +103,15 @@
                     </div>
                     <div class="container row">
                         <div class="container">
+                            {% for err in error %}
+                            <div class="container alert alert-warning">
+                                <strong>Warning!</strong> data {{err}} tidak valid
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="container row">
+                        <div class="container">
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                     </div>
@@ -110,9 +119,6 @@
             </div>    
         </div>
     </form>
-    <div>
-        <p>{{error}}</p>
-    </div>
 </div>
 
 {% endblock content %}

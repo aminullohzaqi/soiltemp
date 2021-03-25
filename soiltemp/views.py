@@ -5,10 +5,9 @@ from django.contrib.auth.decorators import login_required
 from inputForm import models
 
 def index(request):
-    context = {
-        'judul': 'Login'
-    }
-    user = None
+    user    = None
+    error   = ""
+
     if request.method == "POST":
         username_login = request.POST['username']
         password_login = request.POST['password']
@@ -19,13 +18,18 @@ def index(request):
             login(request, user)
             return redirect('dashboard')
         else:
-            return redirect('index')
-        
+            error = "User atau Password tidak Valid"
+            #return redirect('index')
+    context = {
+        'judul': 'Login',
+        'error': error,
+    }
+
     if request.method == "GET":
         if request.user.is_authenticated:
             return redirect('dashboard')
-        else:
-            return render(request, 'login.html', context)    
+
+    return render(request, 'login.html', context)            
 
 @login_required
 def logoutView(request):

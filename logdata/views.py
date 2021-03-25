@@ -129,7 +129,8 @@ def modelPrediction(suhu, kelembaban, tekanan, radiasi_matahari, wind_speed, rai
 @login_required
 def update(request, update_id):
     soiltemp_form = models.SoilTempModel.objects.get(id=update_id)
-    
+
+    error = ""
     data = {
         'tanggal'           : soiltemp_form.tanggal,
         'jam'               : soiltemp_form.jam,
@@ -177,11 +178,12 @@ def update(request, update_id):
             return redirect('logdata')
         
         else :
-            error = soiltemp_form.errors
+            error = update_form.errors
     
     context = {
         'judul': 'Edit Data',
         'update_form': update_form,
+        'error': error,
     }
     
     return render(request, 'logdata/update.html', context)
