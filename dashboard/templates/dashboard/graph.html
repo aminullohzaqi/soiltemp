@@ -2,6 +2,12 @@
 
 {% load static %}
 
+{% block head %}
+<title>{{judul}}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="refresh" content="60">
+{% endblock head %}
+
 {% block style %}
 {% include "snippets/chartscript.html" %}
 <style>
@@ -133,7 +139,7 @@
             </div>
             <div class="information">
                 <h6>Location :</h6>
-                <h5>Staklim Tangerang Selatan</h5>
+                <h5>Stasiun Meteorologi Cilacap</h5>
             </div>
             <div class="information">
                 <h6>Lat, Long :</h6>
@@ -148,7 +154,7 @@
             <div class="container graph shadow">
                 <div class="judul">
                     <div class="">
-                        <h5 class="">Suhu Tanah Staklim Tangerang Selatan</h5>
+                        <h5 class="">Suhu Tanah Stamet Cilacap</h5>
                     </div>
                 </div>
                 <canvas id="soiltemp"></canvas>

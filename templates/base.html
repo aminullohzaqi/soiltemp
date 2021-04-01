@@ -3,8 +3,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{{judul}}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block head %}
+        <title>{{judul}}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% endblock head %}
     {% include "snippets/style.html" %}
     {% block style_sidenav %}
         <link rel="stylesheet" type="text/css" href="{% static "css/sidenav_style.css" %}">
