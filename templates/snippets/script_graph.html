@@ -1,205 +1,181 @@
 {% load static %}
 
 <script>
-        var ctx = document.getElementById("soiltemp");
-        var myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: [
+    var ctx = document.getElementById("soiltempstamet");
+    var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: [
+            {% for temp in graph_data %}
+            '{{temp.jam}}',
+            {% endfor temp in graph_data %}
+        ],
+        datasets: [{
+            label: '0 cm',
+            data: [
                 {% for temp in graph_data %}
-                '{{temp.jam}}',
+                {{temp.cm_0}},
                 {% endfor temp in graph_data %}
             ],
-            datasets: [{
-                label: '5 cm',
-                data: [
-                    {% for temp in graph_data %}
-                    {{temp.cm_5}},
-                    {% endfor temp in graph_data %}
-                ],
-                backgroundColor: ['rgba(255, 99, 132, 0)'],
-                borderColor: ['rgba(233, 69, 96, 1)'],
-                borderWidth: 1
+            backgroundColor: ['rgba(255, 99, 132, 0)'],
+            borderColor: ['rgba(233, 69, 96, 1)'],
+            borderWidth: 1
+        },
+        {
+            label: '2 cm',
+            data: [
+                {% for temp in graph_data %}
+                {{temp.cm_2}},
+                {% endfor temp in graph_data %}
+            ],
+            backgroundColor: ['rgba(0, 159, 64, 0)'],
+            borderColor: ['rgba(69, 4, 106, 1)'],
+            borderWidth: 1
+        },
+        {
+            label: '10 cm',
+            data: [
+                {% for temp in graph_data %}
+                {{temp.cm_10}},
+                {% endfor temp in graph_data %}
+            ],
+            backgroundColor: ['rgba(0, 227, 45, 0)'],
+            borderColor: ['rgba(0, 227, 45, 1)'],
+            borderWidth: 1
+        },
+        {
+            label: '20 cm',
+            data: [
+                {% for temp in graph_data %}
+                {{temp.cm_20}},
+                {% endfor temp in graph_data %}
+            ],
+            backgroundColor: ['rgba(238, 245, 0, 0)'],
+            borderColor: ['rgba(114, 181, 183, 1)'],
+            borderWidth: 1
+        },
+        {
+            label: '50 cm',
+            data: [
+                {% for temp in graph_data %}
+                {{temp.cm_50}},
+                {% endfor temp in graph_data %}
+            ],
+            backgroundColor: ['rgba(255, 155, 0, 0)'],
+            borderColor: ['rgba(20,210,255,1)'],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        legend: {
+            display: true,
+            position: 'top',
+            align: 'end',
+            labels: {
+                boxWidth: 15,
             },
-            {
-                label: '10 cm',
-                data: [
-                    {% for temp in graph_data %}
-                    {{temp.cm_10}},
-                    {% endfor temp in graph_data %}
-                ],
-                backgroundColor: ['rgba(0, 159, 64, 0)'],
-                borderColor: ['rgba(69, 4, 106, 1)'],
-                borderWidth: 1
-            },
-            {
-                label: '20 cm',
-                data: [
-                    {% for temp in graph_data %}
-                    {{temp.cm_20}},
-                    {% endfor temp in graph_data %}
-                ],
-                backgroundColor: ['rgba(0, 227, 45, 0)'],
-                borderColor: ['rgba(0, 227, 45, 1)'],
-                borderWidth: 1
-            },
-            {
-                label: '50 cm',
-                data: [
-                    {% for temp in graph_data %}
-                    {{temp.cm_50}},
-                    {% endfor temp in graph_data %}
-                ],
-                backgroundColor: ['rgba(238, 245, 0, 0)'],
-                borderColor: ['rgba(114, 181, 183, 1)'],
-                borderWidth: 1
-            },
-            {
-                label: '100 cm',
-                data: [
-                    {% for temp in graph_data %}
-                    {{temp.cm_100}},
-                    {% endfor temp in graph_data %}
-                ],
-                backgroundColor: ['rgba(255, 155, 0, 0)'],
-                borderColor: ['rgba(20,210,255,1)'],
-                borderWidth: 1
+        },
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: false,
+                    stepSize: 1,
+                }
             }]
+        }
+    }
+    });
+</script>
+
+<script>
+    var ctx = document.getElementById("soiltempstaklim");
+    var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: [
+            {% for temp in graph_data %}
+            '{{temp.jam}}',
+            {% endfor temp in graph_data %}
+        ],
+        datasets: [{
+            label: '5 cm',
+            data: [
+                {% for temp in graph_data %}
+                {{temp.cm_5}},
+                {% endfor temp in graph_data %}
+            ],
+            backgroundColor: ['rgba(255, 99, 132, 0)'],
+            borderColor: ['rgba(233, 69, 96, 1)'],
+            borderWidth: 1
         },
-        options: {
-            responsive: true,
-            maintainAspectRatio: true,
-            legend: {
-                display: true,
-                position: 'top',
-                align: 'end',
-                labels: {
-                    boxWidth: 15,
-                },
+        {
+            label: '10 cm',
+            data: [
+                {% for temp in graph_data %}
+                {{temp.cm_10}},
+                {% endfor temp in graph_data %}
+            ],
+            backgroundColor: ['rgba(0, 159, 64, 0)'],
+            borderColor: ['rgba(69, 4, 106, 1)'],
+            borderWidth: 1
+        },
+        {
+            label: '20 cm',
+            data: [
+                {% for temp in graph_data %}
+                {{temp.cm_20}},
+                {% endfor temp in graph_data %}
+            ],
+            backgroundColor: ['rgba(0, 227, 45, 0)'],
+            borderColor: ['rgba(0, 227, 45, 1)'],
+            borderWidth: 1
+        },
+        {
+            label: '50 cm',
+            data: [
+                {% for temp in graph_data %}
+                {{temp.cm_50}},
+                {% endfor temp in graph_data %}
+            ],
+            backgroundColor: ['rgba(238, 245, 0, 0)'],
+            borderColor: ['rgba(114, 181, 183, 1)'],
+            borderWidth: 1
+        },
+        {
+            label: '100 cm',
+            data: [
+                {% for temp in graph_data %}
+                {{temp.cm_100}},
+                {% endfor temp in graph_data %}
+            ],
+            backgroundColor: ['rgba(255, 155, 0, 0)'],
+            borderColor: ['rgba(20,210,255,1)'],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        legend: {
+            display: true,
+            position: 'top',
+            align: 'end',
+            labels: {
+                boxWidth: 15,
             },
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: false,
-                        stepSize: 1,
-                    }
-                }]
-            }
-        }
-        });
-    </script>
-    <script>
-        var ctx = document.getElementById("rainfall");
-        var myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: [
-                {% for rf in graph_data %}
-                '{{rf.jam}}',
-                {% endfor rf in graph_data %}
-            ],
-            datasets: [{
-                label: 'Curah Hujan',
-                data: [
-                    {% for rf in graph_data %}
-                    {{rf.rain_fall}},
-                    {% endfor rf in graph_data %}
-                ],
-                backgroundColor: ['rgba(255, 99, 132, 0.5)'],
-                borderColor: ['rgba(255,99,132,1)'],
-                borderWidth: 1
-            },]
         },
-        options: {
-            responsive: true,
-            maintainAspectRatio: true,
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero:true,
-                        stepSize: 5,
-                    }
-                }]
-            }
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: false,
+                    stepSize: 1,
+                }
+            }]
         }
-        });
-    </script>
-    <script>
-        var ctx = document.getElementById("solarRadiation");
-        var myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: [
-                {% for sr in graph_data %}
-                '{{sr.jam}}',
-                {% endfor sr in graph_data %}
-            ],
-            datasets: [{
-                label: 'Radiasi Matahari',
-                data: [
-                    {% for sr in graph_data %}
-                    {{sr.radiasi_matahari}},
-                    {% endfor sr in graph_data %}
-                ],
-                backgroundColor: ['rgba(100, 200, 100, 0.5)'],
-                borderColor: ['rgba(100,200,100,1)'],
-                borderWidth: 1
-            },]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: true,
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero:true,
-                        stepSize: 10,
-                    }
-                }]
-            }
-        }
-        });
-    </script>
-    <script type="text/javascript" src="{% static "js/gauge.js"%}"></script>
-    <script>
-        var pad = function(tar) {}
-        var suhu = Gauge(
-        document.getElementById("suhu"),
-            {
-                max: 100.0,
-                value:  {% for suhu in gauge_data %}
-                        {{suhu.suhu}}
-                        {% endfor suhu in gauge_data %},
-            }
-        );
-        
-        var kelembaban = Gauge(
-        document.getElementById("kelembaban"),
-		    {
-                max: 100.0,
-                value:  {% for kelembaban in gauge_data %}
-                        {{kelembaban.kelembaban}}
-                        {% endfor kelembaban in gauge_data %},
-            }
-        );
-        
-        var tekanan = Gauge(
-        document.getElementById("tekanan"),
-		    {
-                max: 1020,
-                value:  {% for tekanan in gauge_data %}
-                        {{tekanan.tekanan}}
-                        {% endfor tekanan in gauge_data %},
-            }
-        );
-        
-        var wind_speed = Gauge(
-        document.getElementById("wind_speed"),
-		    {
-                max: 30,
-                value:  {% for wind_speed in gauge_data %}
-                        {{wind_speed.wind_speed}}
-                        {% endfor wind_speed in gauge_data %},
-            }
-        );
-    </script>
+    }
+    });
+</script>
+
+<script type="text/javascript" src="{% static "js/gauge.js"%}"></script>

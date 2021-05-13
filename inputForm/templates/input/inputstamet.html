@@ -1,0 +1,77 @@
+{% extends "input.html" %}
+
+{% block content %}
+<div class="container row1 row">
+    <div class="title col-md-4">
+        <h1>{{judul}}</h1>
+    </div>
+</div>
+<div class="container row2">
+    <form method="post">
+        {%csrf_token%}
+        <div class="container">
+            <div class="form row">
+                <div class="col-md-4 form1 shadow">
+                    <div class="form-group">
+                        {{soiltemp_form_stamet.tanggal.label}}
+                        {{soiltemp_form_stamet.tanggal}}
+                    </div>
+                    <div class="form-group">
+                        {{soiltemp_form_stamet.jam.label}}
+                        {{soiltemp_form_stamet.jam}}
+                    </div>
+                </div>
+                <div class="col-md-7 form2 shadow">
+                    <div class="container row">
+                        <div class="form-group col-md-6">
+                            {{soiltemp_form_stamet.suhu.label}}
+                            {{soiltemp_form_stamet.suhu}}
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            {{soiltemp_form_stamet.kelembaban.label}}
+                            {{soiltemp_form_stamet.kelembaban}}
+                        </div>
+                    </div>
+                    <div class="container row">
+                        <div class="form-group col-md-6">
+                            {{soiltemp_form_stamet.tekanan.label}}
+                            {{soiltemp_form_stamet.tekanan}}
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            {{soiltemp_form_stamet.radiasi_matahari.label}}
+                            {{soiltemp_form_stamet.radiasi_matahari}}
+                        </div>
+                    </div>
+                    <div class="container row">
+                        <div class="form-group col-md-6">
+                            {{soiltemp_form_stamet.wind_speed.label}}
+                            {{soiltemp_form_stamet.wind_speed}}
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            {{soiltemp_form_stamet.rain_fall.label}}
+                            {{soiltemp_form_stamet.rain_fall}}
+                        </div>
+                    </div>
+                    <div class="container row">
+                        <div class="container">
+                            {% for err in error %}
+                            <div class="container alert alert-warning">
+                                <strong>Warning!</strong> data {{err}} tidak valid
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="container row">
+                        <div class="container">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+        </div>
+    </form>
+</div>
+{% endblock content %}

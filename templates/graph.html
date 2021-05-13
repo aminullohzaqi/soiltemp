@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block head %}
+<title>{{judul}}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="refresh" content="600">
+{% endblock head %}
+
+{% block style %}
+{% include "snippets/chartscript.html" %}
+<style>
+    h1{
+        border-bottom-style: solid;
+        border-bottom-color: #1479FF;
+        color: #193B68;
+        font-size: 52px;
+        font-weight: 600;
+    }
+
+    h4{
+        padding-top: 10px;
+    }
+
+    h5{
+        color: #193B68;
+    }
+
+    .row1{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .info{
+        color: #193B68B3;
+        display: block;
+        margin-top: 30px;
+        padding: 20px 0px 20px 20px;
+    }
+
+    .information{
+        padding: 30px 0 0 0;
+    }
+
+    .grafik{
+        margin-top: 30px;
+        padding: 20px 20px 20px 10px;
+    }
+
+    .judul{
+        color: #193B68;
+        padding: 25px 20px 5px 5px;
+        text-align: center;
+        border-bottom: 2px solid #1479FF;
+    }
+    
+    .graph{
+        background-color: #FFFFFF;
+        border-radius: 20px;
+    }
+
+    .row2{
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .temp{
+        background-color: #FFFFFF;
+        border-radius: 15px;
+        margin-bottom: 20px;
+    }
+
+    .temptitle{
+        color: #193B68B3;
+        font-weight: 600;
+        padding: 10px 0 10px 10px;
+    }
+
+    .nilai{
+        color: #193B68;
+        padding: 0 10px 10px 10px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .fa1{
+        color: #14A5FF;
+    }
+    
+    .fa2{
+        color: #14D2FF;
+    }
+
+    .fa3{
+        color: #14EBFF;
+    }
+
+    @media only screen and (max-device-width: 750px) {
+        .info{
+            padding: 20px 0px 20px 0px;
+        }
+        .information{
+            padding: 10px 0 0 0;
+        }
+        .grafik{
+            margin-top: 10px;
+            padding: 0px 0px 20px 0px;
+        }
+        h1{
+            font-size: 32px;
+        }
+        .judul{
+            padding: 10px 0px 5px px;
+        }
+        h4{
+            font-size: 25px;
+        }
+        h5{
+            font-size: 15px;
+        }
+        h6{
+            font-size: 13px;
+        }
+    }
+</style>
+{% endblock style %}
+
+{% block sidenav %}
+    {% include sidenav%}
+{% endblock sidenav %}
+
+{% block content %}
+    
+{% endblock content %}
+
+{% block script %}
+    {% include "snippets/script_graph.html" %}    
+{% endblock script %}

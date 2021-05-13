@@ -154,19 +154,9 @@
         <tbody>
             {% for soiltemp in filter_data %}
             <tr>
-                <td>{{soiltemp.tanggal}}</td>
-                <td>{{soiltemp.jam}}</td>
-                <td>{{soiltemp.suhu}}</td>
-                <td>{{soiltemp.kelembaban}}</td>
-                <td>{{soiltemp.tekanan}}</td>
-                <td>{{soiltemp.radiasi_matahari}}</td>
-                <td>{{soiltemp.wind_speed}}</td>
-                <td>{{soiltemp.rain_fall}}</td>
-                <td>{{soiltemp.cm_5}}</td>
-                <td>{{soiltemp.cm_10}}</td>
-                <td>{{soiltemp.cm_20}}</td>
-                <td>{{soiltemp.cm_50}}</td>
-                <td>{{soiltemp.cm_100}}</td>
+                {% block table %}
+                
+                {% endblock table %}
                 <td>
                     <a href="{% url 'update' soiltemp.id %}" class="btn btn-warning">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>

@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate
 # Create your views here.
 def about(request):
     admin_group = Group.objects.get(name='administrator')
-    staff_group = Group.objects.get(name='staff_stasiun')
+    staff_group = Group.objects.get(name='staff_staklim')
     visitor_group = Group.objects.get(name='user_visit')
     
     all_group  = request.user.groups.all()
