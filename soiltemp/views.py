@@ -21,7 +21,7 @@ def index(request):
             error = "User atau Password tidak Valid"
             #return redirect('index')
     context = {
-        'judul': 'Login',
+        'judul': 'Siltera | Login',
         'error': error,
     }
 

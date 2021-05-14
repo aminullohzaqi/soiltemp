@@ -26,7 +26,7 @@ def logdata(request) :
             template_name = 'logdata/logdatastamet.html'
 
             filter_form = forms.FilterForm(request.GET or None)
-            filter_data = models.SoilTempModelCilacap.objects.order_by('-published')
+            filter_data = models.SoilTempModelCilacap.objects.order_by('-published')[0:30]
             #error = ""
             if request.method == 'GET':
                 if filter_form.is_valid():
@@ -76,13 +76,13 @@ def logdata(request) :
                         return response
                     
             else:
-                filter_data = models.SoilTempModelCilacap.objects.order_by('-tanggal') 
+                filter_data = models.SoilTempModelCilacap.objects.order_by('-tanggal')[0:30] 
 
         elif staklim_group in all_group:
             template_name = 'logdata/logdatastaklim.html'
 
             filter_form = forms.FilterForm(request.GET or None)
-            filter_data = models.SoilTempModel.objects.order_by('-published')
+            filter_data = models.SoilTempModel.objects.order_by('-published')[0:30]
             #error = ""
             if request.method == 'GET':
                 if filter_form.is_valid():
@@ -132,13 +132,13 @@ def logdata(request) :
                         return response
                     
             else:
-                filter_data = models.SoilTempModel.objects.order_by('-tanggal') 
+                filter_data = models.SoilTempModel.objects.order_by('-tanggal')[0:30] 
 
     else:
         return redirect('index')
 
     context = {
-        'judul': 'Log Data',
+        'judul': 'Siltera | Log Data',
         'filter_form': filter_form,
         'filter_data': filter_data,
         'all_group': all_group,
@@ -321,7 +321,7 @@ def update(request, update_id):
 
     
     context = {
-        'judul': 'Edit Data',
+        'judul': 'Siltera | Edit',
         'update_form': update_form,
         'error': error,
     }

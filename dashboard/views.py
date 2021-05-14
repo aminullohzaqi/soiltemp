@@ -133,6 +133,9 @@ def graph(request) :
             template_name = "dashboard/graphstamet.html"
             sidenav = "dashboard/snippets/sidenav_dashboard.html"
 
+            gauge_data = models.SoilTempModelCilacap.objects.order_by('-published')[0:1]
+            graph_data = models.SoilTempModelCilacap.objects.order_by('-published')[:20:-1]
+
         elif staklim_group in all_group:
             template_name = "dashboard/graphstaklim.html"
             sidenav = "dashboard/snippets/sidenav_dashboard.html"
@@ -158,7 +161,7 @@ def graph(request) :
         return redirect('index')
 
     context = {
-        'judul': 'Graph Data',
+        'judul': 'Siltera | Dashboard',
         'graph_data': graph_data,
         'gauge_data': gauge_data,
         'all_group': all_group,
