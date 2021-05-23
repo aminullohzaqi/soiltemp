@@ -1,1 +1,1 @@
-web: gunicorn soiltemp.wsgi --log-file -
+web:gunicorn soiltemp.wsgi --log-file -
