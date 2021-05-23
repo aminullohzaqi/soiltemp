@@ -143,7 +143,7 @@ def inputform(request):
             return redirect('index')
 
     context = {
-        'judul': 'Sltera | Input',
+        'judul': 'Input',
         'soiltemp_form_staklim': soiltemp_form_staklim,
         'soiltemp_form_stamet': soiltemp_form_stamet,
         'error': error,

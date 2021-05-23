@@ -5,22 +5,20 @@ from django.contrib.auth import authenticate
 # Create your views here.
 def about(request):
     admin_group = Group.objects.get(name='administrator')
-    staff_group = Group.objects.get(name='staff_staklim')
-    visitor_group = Group.objects.get(name='user_visit')
+    staklim_group = Group.objects.get(name='staff_staklim')
+    stamet_group = Group.objects.get(name='staff_stamet')
     
     all_group  = request.user.groups.all()
 
-    sidenav = None
+    sidenav = "about/snippets/sidenav_about.html"
     template_name = None
 
     if request.user.is_authenticated:
         template_name = 'about/about.html'
-        if admin_group in all_group:
-            sidenav = "about/snippets/sidenav_about.html"
-        elif staff_group in all_group:
-            sidenav = "about/snippets/sidenav_about.html"
-        elif visitor_group in all_group:
-            sidenav = "about/snippets/sidenav_about_user.html"
+        if staklim_group in all_group:
+            template_name = "about/aboutstaklim.html"
+        elif stamet_group in all_group:
+            template_name = "about/aboutstamet.html"
     else:
         return redirect('index')
     
@@ -28,8 +26,8 @@ def about(request):
         'judul': 'About',
         'all_group': all_group,
         'admin_group': admin_group,
-        'staff_group': staff_group,
-        'visitor_group': visitor_group,
+        'stamet_group': stamet_group,
+        'staklim_group': staklim_group,
         'sidenav': sidenav,
     }
    

@@ -138,7 +138,7 @@ def logdata(request) :
         return redirect('index')
 
     context = {
-        'judul': 'Siltera | Log Data',
+        'judul': 'Log Data',
         'filter_form': filter_form,
         'filter_data': filter_data,
         'all_group': all_group,

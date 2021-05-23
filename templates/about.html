@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block navbar %}
+    {% include "snippets/navbar.html"%}
+{% endblock navbar %}
+
+{% block sidenav %}
+    {% include sidenav %}
+{% endblock sidenav %}
+
+{% block style %}
+<style>
+    h1{
+        border-bottom-style: solid;
+        border-bottom-color: #1479FF;
+        color: #193B68;
+        font-size: 52px;
+        font-weight: 600;
+        margin-top: 30px;
+        padding-top: 20px;
+    }
+
+    .row2,.row4,.row3{
+        display: flex;
+        justify-content: start;
+    }
+
+    .row3{
+        flex-direction: row-reverse;
+        background-color: #FAFAFA;
+        border-radius: 10px;
+    }
+
+    .img1{
+        width: 100%;
+        height: auto;
+    }
+
+    .img2{
+        padding-top: 30px;
+        padding-bottom: 20px;
+        width: 70%;
+        height: auto;
+    }
+
+    .img3{
+        padding-top: 30px;
+        color: #1479FF;
+        text-align: center;
+    }
+
+    .text-content{
+        padding-top: 50px;
+        text-align: left;
+        font-size: 17px;
+        font-weight: 100;
+        letter-spacing: 0.05em;
+    }
+
+    @media only screen and (max-device-width: 750px) {
+        h1{
+            font-size: 32px;
+        }
+        .ann{
+            text-align: center;
+        }
+    }
+</style>
+{% endblock style %}
+
+{% block content %}
+<div class="container row1 row">
+    <div class="title col-lg-4">
+        <h1>{{judul}}</h1>
+    </div>
+</div>
+<div class="container-fluid row row2">
+    <div class="col-lg-4">
+        <img class="img1" src="{% static "img/Siltera.png" %}" alt="">
+    </div>
+    <div class="col-lg-8">
+        <p class="text-content">SILTERA merupakan sebuah website yang difungsikan untuk estimasi nilai suhu tanah (soil temperature estimator) yang bertujuan untuk menghindari adanya kekosongan data pada stasiun BMKG yang terdapat kerusakan pada instrumen suhu tanah.</p>
+    </div>
+</div>
+<div class="container-fluid row row3 shadow">
+    <div class="col-lg-4 ann">
+        <img class="img2" src="{% static "img/ANN.png" %}" alt="">
+    </div>
+    <div class="col-lg-8">
+        <p class="text-content">Estimasi nilai suhu tanah menggunakan Artificial Neural Network dengan metode Back Propagation. Nilai yang digunakan sebagai input berasal dari parameter instrumen Automatic Weather Station (AWS) milik BMKG yang dilatih dengan data target suhu tanah yang telah tersedia.</p>
+    </div>
+</div>
+<div class="container-fluid row row4">
+    <div class="col-lg-4">
+        <div class="img3">
+            <i class="fa fa-thermometer-half" style="font-size:150px;" aria-hidden="true"></i>
+        </div>
+    </div>
+    <div class="col-lg-8">
+        {% block textcontent %}
+        
+        {% endblock textcontent %}
+    </div>
+</div>
+{% endblock content %}

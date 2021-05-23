@@ -161,7 +161,7 @@ def graph(request) :
         return redirect('index')
 
     context = {
-        'judul': 'Siltera | Dashboard',
+        'judul': 'Dashboard',
         'graph_data': graph_data,
         'gauge_data': gauge_data,
         'all_group': all_group,

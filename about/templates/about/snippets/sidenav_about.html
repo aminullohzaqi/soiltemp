@@ -1,6 +1,9 @@
 {% load static %}
 
 <div class="sidebar">
+    <div class="container logo">
+        <img id="logo" src="{% static "img/Siltera.png" %}" alt="">
+    </div>
     <div class="menu-atas">
         <div class="menu">
             <a class="link" href="{% url "dashboard" %}">
@@ -43,7 +46,7 @@
 </div>
 
 <nav class="navbar fixed-top navbar-expand-md navbar-light bg-light shadow">
-    <a class="navbar-brand" href="{% url "dashboard" %}">Acanation</a>
+    <a class="navbar-brand" href="{% url "dashboard" %}">SILTERA</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
     </button>
