@@ -26,7 +26,7 @@ SECRET_KEY = 'h5krlv)guj6@iu=m*in^%2+6ia$!c4cf#1vgq*p3u7$oy6n)(5'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1','']
+ALLOWED_HOSTS = ['127.0.0.1','siltera.herokuapp.com']
 
 
 # Application definition
