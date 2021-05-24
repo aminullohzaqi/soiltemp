@@ -1,5 +1,13 @@
 {% extends "logdata.html" %}
 
+{% block depth %}
+<th scope="col">0cm</th>
+<th scope="col">2cm</th>
+<th scope="col">10cm</th>
+<th scope="col">20cm</th>
+<th scope="col">50cm</th>
+{% endblock depth %}
+
 {% block table %}
 <td>{{soiltemp.tanggal}}</td>
 <td>{{soiltemp.jam}}</td>

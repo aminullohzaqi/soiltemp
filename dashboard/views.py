@@ -12,24 +12,20 @@ import json
 # Create your views here.
 
 def modelPrediction(suhu, kelembaban, tekanan, radiasi_matahari, wind_speed, rain_fall):
-    model = load_model('ml_model_36_9_27.h5')
-    model2= load_model('ml_model_(50_100)_11_42_46_17.h5')
+    model = load_model('ml_model_cilacap_20_49_27_21.h5')
 
     X = [[suhu, kelembaban, tekanan, radiasi_matahari, wind_speed, rain_fall]]
 
     pred = model.predict(X)
-    pred = np.array_split(pred[0], 3)
+    pred = np.array_split(pred[0], 5)
 
-    pred2= model2.predict(X)
-    pred2= np.array_split(pred2[0], 2)
+    cm_0    = (float(pred[0])*(50-20))+20
+    cm_2    = (float(pred[1])*(50-20))+20
+    cm_10   = (float(pred[2])*(50-20))+20
+    cm_20   = (float(pred[3])*(50-20))+20
+    cm_50   = (float(pred[4])*(50-20))+20
 
-    cm_5    = (float(pred[0])*(50-20))+20
-    cm_10   = (float(pred[1])*(50-20))+20
-    cm_20   = (float(pred[2])*(50-20))+20
-    cm_50   = (float(pred2[0])*(50-20))+20
-    cm_100  = (float(pred2[1])*(50-20))+20
-
-    return cm_5, cm_10, cm_20, cm_50, cm_100
+    return cm_0, cm_2, cm_10, cm_20, cm_50
 
 def AWS():
     tgl = datetime.now()
