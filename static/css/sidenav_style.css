@@ -50,9 +50,11 @@
 }
 
 .sidebar i {
-    background-color: #1479FF1A;
+    background: linear-gradient(145deg, #e6e6e6, #ffffff);
     border-radius: 15px;
-    color: #1479FF;
+    box-shadow:  11px 11px 29px #c9c9c9,
+             -11px -11px 29px #ffffff;
+    color: #147affc9;
     padding: 15px 15px 15px 15px;
     margin-bottom: 5px;
     align-content: center;
@@ -101,7 +103,9 @@ p {
 }
  
 .sidebar i.active {
-  background-color: #1479FF;
+  background: linear-gradient(145deg, #126de6, #1581ff);
+  box-shadow:  14px 14px 28px #0e57b8,
+             -14px -14px 28px #1a9bff;
   color: #FFFFFF;
 }
 
@@ -110,8 +114,10 @@ p {
 }
 
 .sidebar i:hover:not(.active) {
-  background-color: #A3A3A3;
-  color: white;
+  background: linear-gradient(145deg, #e6e6e6, #ffffff);
+  box-shadow:  14px 14px 28px #949494,
+             -14px -14px 28px #ffffff;
+  color: #147aff;
 }
 
 .sidebar a#logout:hover:not(.active) {

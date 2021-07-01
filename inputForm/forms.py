@@ -154,7 +154,7 @@ class FilterForm(forms.Form):
     start_date  = forms.DateField(
         widget=forms.DateInput(
             attrs={
-            'class': 'form-control',
+            'class': 'form-control input',
             'placeholder':'Select a date', 
             'type':'date',
             }
@@ -163,7 +163,7 @@ class FilterForm(forms.Form):
     end_date    = forms.DateField(
         widget=forms.DateInput(
             attrs={
-            'class': 'form-control',
+            'class': 'form-control input',
             'placeholder':'Select a date', 
             'type':'date',
             }

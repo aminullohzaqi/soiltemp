@@ -33,12 +33,14 @@ def index(request):
 
 @login_required
 def logoutView(request):
-    context = {
-        'judul': 'Logout'
-    }
-    if request.method == "POST":
-        if request.POST["logout"] == "Submit":
-            logout(request)
-            return redirect('index')
-        
-    return render(request, 'logout.html', context)
+    logout(request)
+    return redirect('index')
+    #context = {
+    #    'judul': 'Logout'
+    #}
+    #if request.method == "POST":
+    #    if request.POST["logout"] == "Submit":
+    #        logout(request)
+    #        return redirect('dashboard')
+    #    
+    #return render(request, 'logout.html', context)

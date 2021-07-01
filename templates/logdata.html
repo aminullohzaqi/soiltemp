@@ -61,7 +61,6 @@
     }
     
     #tabel tr {
-        background-color: white;
     }
     
     #tabel tr:hover {background-color: #ddd;}
@@ -70,20 +69,30 @@
         width: auto;
         padding-top: 3px;
         padding-bottom: 10px;
+        background: linear-gradient(145deg, #0e81e6, #1099ff);
     }
     
     .btn{
-        width: 40px;
-        height: 30px;
+        width: 30px;
+        height: 25px;
         margin-top: -5px;
     }
     
     .btn svg {
+        width: 20px;
+        height: 15px;
         display: block;
-        margin-left: -3px;
+        margin-left: -8px;
         margin-top: -2px;
-        align-content: flex-start;
+        align-content: center;
     }
+
+    .input{
+        background: #FFFFFF;
+        box-shadow: inset 5px 5px 8px #dfdfdf,
+            inset -5px -5px 8px #ffffff;
+    }
+
     @media only screen and (max-device-width: 750px) {
         h1{
             font-size: 32px;
@@ -128,45 +137,47 @@
         {%csrf_token%}
         <input type="submit" name="download" class="btn btn-primary" value="Download Data">
     </form>
-    <table class="table" id="tabel">
-        <thead>
-            <tr>
-                <th rowspan="2">Tanggal</th>
-                <th rowspan="2">Jam</th>
-                <th colspan="6">Data AWS</th>
-                <th colspan="5">Suhu Tanah</th>
-                <th rowspan="2">Action</th>
-            </tr>
-            <tr>
-                <th scope="col">Temp</th>
-                <th scope="col">RH</th>
-                <th scope="col">Press</th>
-                <th scope="col">SR</th>
-                <th scope="col">WS</th>
-                <th scope="col">RF</th>
-                {% block depth %}
-                
-                {% endblock depth %}
-            </tr>
-        </thead>
-        <tbody>
-            {% for soiltemp in filter_data %}
-            <tr>
-                {% block table %}
-                
-                {% endblock table %}
-                <td>
-                    <a href="{% url 'update' soiltemp.id %}" class="btn btn-warning">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
-                    </a>
-                    <a href="{% url 'delete' soiltemp.id %}" class="btn btn-danger">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
-                    </a>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <div class="table-responsive">
+        <table class="table table-striped" id="tabel">
+            <thead>
+                <tr>
+                    <th rowspan="2">Tanggal</th>
+                    <th rowspan="2">Jam</th>
+                    <th colspan="6">Data AWS</th>
+                    <th colspan="5">Suhu Tanah</th>
+                    <th rowspan="2">Action</th>
+                </tr>
+                <tr>
+                    <th scope="col">Temp</th>
+                    <th scope="col">RH</th>
+                    <th scope="col">Press</th>
+                    <th scope="col">SR</th>
+                    <th scope="col">WS</th>
+                    <th scope="col">RF</th>
+                    {% block depth %}
+                    
+                    {% endblock depth %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for soiltemp in filter_data %}
+                <tr>
+                    {% block table %}
+                    
+                    {% endblock table %}
+                    <td>
+                        <a href="{% url 'update' soiltemp.id %}" class="btn btn-warning">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
+                        </a>
+                        <a href="{% url 'delete' soiltemp.id %}" class="btn btn-danger">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
     
 </div>
 {% endblock content %}
