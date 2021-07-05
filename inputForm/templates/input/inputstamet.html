@@ -6,10 +6,15 @@
         <h1>{{judul}}</h1>
     </div>
 </div>
-<div class="container row2">
+<div class="container-fluid row2">
+    <div class="row2 alert alert-warning">
+        <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Hanya Digunakan Saat Site Offline
+    </div>
+</div>
+<div class="container-fluid row2">
     <form method="post">
         {%csrf_token%}
-        <div class="container">
+        <div class="container-fluid">
             <div class="form row">
                 <div class="col-md-4 form1">
                     <div class="form-group">
