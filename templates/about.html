@@ -33,6 +33,13 @@
         border-radius: 10px;
     }
 
+    .row5{
+        display: block;
+        justify-content: center;
+        background-color: #FAFAFA;
+        border-radius: 10px;
+    }
+
     .img1{
         width: 100%;
         height: auto;
@@ -47,12 +54,21 @@
 
     .img3{
         padding-top: 30px;
+        padding-bottom: 20px;
         color: #1479FF;
         text-align: center;
     }
 
+    .img4{
+        padding-top: 30px;
+        padding-bottom: 20px;
+        width: 70%;
+        height: auto;
+    }
+
     .text-content{
         padding-top: 50px;
+        padding-bottom: 50px;
         text-align: left;
         font-size: 17px;
         font-weight: 100;
@@ -85,7 +101,7 @@
     </div>
 </div>
 <div class="container-fluid row row3 shadow">
-    <div class="col-lg-4 ann">
+    <div class="col-lg-4 ann text-center">
         <img class="img2" src="{% static "img/ANN.png" %}" alt="">
     </div>
     <div class="col-lg-8">
@@ -102,6 +118,14 @@
         {% block textcontent %}
         
         {% endblock textcontent %}
+    </div>
+</div>
+<div class="container-fluid row row5 shadow">
+    <div class="block text-center">
+        <img class="img4" src="{% static "img/Block.png" %}" alt="">
+    </div>
+    <div class="">
+        <p class="text-content">Perhitungan dimulai dengan memasukan parameter meteorologi ke dalam sistem yang berupa Artificial Neural Network dengan metode Back Propagation. Hasil perhitungan dari sistem yang berupa suhu tanah akan di tampilkan pada halaman Dashboard Website yang tersedia.</p>
     </div>
 </div>
 {% endblock content %}
